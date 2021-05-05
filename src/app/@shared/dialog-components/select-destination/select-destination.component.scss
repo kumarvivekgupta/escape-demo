@@ -1,0 +1,13 @@
+::ng-deep .desktop-screen-dialog {
+  max-width: 40vw !important;
+  background: red;
+
+  .mat-dialog-container {
+
+    max-width: 40vw;
+    width: 70vw !important;
+    height: 70vh;
+    overflow-y: hidden;
+    //  margin-top: 10vh;
+  }
+}

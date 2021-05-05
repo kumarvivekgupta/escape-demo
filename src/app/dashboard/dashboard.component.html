@@ -1,0 +1,38 @@
+<button mat-raised-button (click)="openDestinationSelection()">Open Destination Selection</button>
+
+
+<form [formGroup]="myForm" *ngIf="destinationOpen">
+  <ng-container *ngFor="let group of myForm.controls |keyvalue">
+
+    <div [formGroup]="group.value">
+      <button *ngIf="productArray(group.value).controls.length===0"
+        type="button" (click)="onAddProduct(group.value)">Add Origin City</button>
+      <div formArrayName="productList">
+        <div *ngFor="let item of productArray(group.value).controls; let i = index">
+<!--          <label for="">{{i === 0 ? 'Select Origin City' : 'Select Destination'}}</label>-->
+          <ng-container class="input-container">
+            <input matInput [formControlName]="i" (keyup)="onKeyUpDelayed($event)">
+            <button (click)="nextDestination=true">Save</button>
+          </ng-container>
+
+<!--          <button (click)="removeProduct(group.value,i)">Remove</button>-->
+
+        </div>
+<!--        <mat-select>-->
+<!--          <mat-option *ngFor="let city of matchedCities" [value]="city.name">-->
+<!--            {{city.name}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+      </div>
+      <div *ngIf="nextDestination" class="next-destination">
+        <button (click)="onAddProduct(group.value); nextDestination=false">Add Destination</button>
+        <button (click)="completeTrip()">Complete Trip</button>
+      </div>
+
+
+
+    </div>
+  </ng-container>
+</form>
+
+<div class="map" id="map" class="match-parent"></div>

@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "escape-demo"
+    }
+  },
+  "defaultProject": "escape-demo",
+  "cli": {
+    "analytics": false
+  }
 }
